@@ -623,14 +623,18 @@ void menuSetupKeyer(int btn){
   
   printLine1("Keyer Set!");
   active_delay(600);
+  
+  printLine2("");
   printLine1("");
+  updateDisplay(); 
+  menuOn = 0;
 }
 
 void menuReadADC(int btn){
   int adc;
   
   if (!btn){
-    printLine2("6:Setup>Read ADC>");
+    printLine2("Read ADC(Keyer)>");
     return;
   }
   delay(500);
@@ -642,6 +646,9 @@ void menuReadADC(int btn){
   }
 
   printLine1("");
+  printLine2("");
+  active_delay(500);
+  menuOn = 0;  
   updateDisplay();
 }
 
