@@ -94,6 +94,22 @@ void printLine(char linenmbr, char *c) {
   }
 }
 
+//for reduce program size, KD8CEC
+void printLineF(char linenmbr, const __FlashStringHelper *c)
+{
+  int i;
+  char tmpBuff[17];
+  PGM_P p = reinterpret_cast<PGM_P>(c);  
+
+  for (i = 0; i < 17; i++){
+    unsigned char fChar = pgm_read_byte(p++);
+    tmpBuff[i] = fChar;
+    if (fChar == 0)
+      break;
+  }
+
+  printLine(linenmbr, tmpBuff);
+}
 
 //  short cut to print to the first line
 void printLine1(char *c){
