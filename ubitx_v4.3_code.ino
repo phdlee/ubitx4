@@ -336,8 +336,8 @@ void startTx(byte txMode){
       }
       else if (vfoActive == VFO_A){
         vfoActive = VFO_B;
+        isUSB = isUsbVfoB;    // <== Modified by KD8CEC
         frequency = vfoB;
-        isUSB = isUsbVfoA;        
       }
     }
     setFrequency(frequency);

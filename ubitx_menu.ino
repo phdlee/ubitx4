@@ -196,19 +196,26 @@ void menuSidebandToggle(int btn){
       printLine2("LSB \x7E USB");
   }
   else {
-      if (isUSB == true){
-        isUSB = false;
-        printLine2("LSB Selected");
-        active_delay(500);
-        printLine2("");
-      }
-      else {
-        isUSB = true;
-        printLine2("USB Selected");
-        active_delay(500);
-        printLine2("");
-      }
-    
+    if (isUSB == true){
+      isUSB = false;
+      printLine2("LSB Selected");
+      active_delay(500);
+      printLine2("");
+    }
+    else {
+      isUSB = true;
+      printLine2("USB Selected");
+      active_delay(500);
+      printLine2("");
+    }
+
+    //Added by KD8CEC
+    if (vfoActive == VFO_B){
+      isUsbVfoB = isUSB;
+    }
+    else {
+      isUsbVfoB = isUSB;
+    }    
     updateDisplay();
     menuOn = 0;
   }
@@ -226,15 +233,16 @@ void menuSplitToggle(int btn){
   else {
       if (splitOn == 1){
         splitOn = 0;
-        printLine2("Split ON");
+        printLine2("Split Off");
       }
       else {
         splitOn = 1;
         if (ritOn == 1)
           ritOn = 0;
-        printLine2("Split Off");
+        printLine2("Split ON");
       }
     active_delay(500);
+    printLine2("");
     updateDisplay();
     menuOn = 0;
   }
